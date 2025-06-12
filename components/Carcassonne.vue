@@ -1,28 +1,10 @@
 <template>
-  <ScreenSpace :depth="15">
-    <Text3D
-      ref="backgroundText"
-      :size="1.6"
-      :height="0"
-      :position="[0, 2.5, 5]"
-      font="/fonts/Spectral SC_Regular.json"
-      text="Carcassonne"
-      :center="true"
-      :need-updates="true"
-      v-if="!page.title"
-    >
-      <TresMeshStandardMaterial color="#000000" />
-    </Text3D>
-  </ScreenSpace>
   <primitive :object="scene" :scale="0.01"></primitive>
 </template>
 
 <script setup lang="ts">
-import { Text3D, useGLTF } from "@tresjs/cientos";
-import { useTexture } from "@tresjs/core";
 import * as THREE from "three";
 const { page } = useContent();
-const backgroundText = ref();
 
 const { scene } = await useGLTF(
   "/cite-carcassonne-export/cite-carcassonne.gltf",
@@ -77,10 +59,4 @@ scene.traverse((el: any) => {
 });
 
 const { camera } = useTresContext();
-
-const { onLoop } = useRenderLoop();
-onLoop(() => {
-  if (camera.value && backgroundText.value) {
-  }
-});
 </script>

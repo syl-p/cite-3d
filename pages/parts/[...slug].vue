@@ -1,21 +1,20 @@
 <template>
-  <section class="font-serif transition-all">
+  <section class="font-serif transition-all snap-y snap-mandatory">
     <div
       class="bg-[#fdfcf5] fixed w-full h-full transition-all -z-10"
       :style="{ opacity: scrollOverHeaderPourcent / 100 }"
     ></div>
-    <header class="h-[200vh] relative w-full transition-all" ref="headerRef">
+    <header class="h-[200vh] snap-start relative w-full transition-all" ref="headerRef" @click="backToMap()">
       <div
-        v-show="scrollOverHeaderPourcent < 50"
+        v-show="scrollOverHeaderPourcent < 60"
         class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-screen w-full flex flex-col justify-center items-center"
       >
-        <div class="flex-1 flex flex-col justify-center items-center">
-          <p>Les ramparts</p>
-          <h1 class="font-spectral text-4xl lg:text-7xl">{{ page.title }}</h1>
-          <p>{{ scrollOverHeaderPourcent }}</p>
+        <div class="flex-1">
+
         </div>
+
         <div class="pb-28">
-          <p class="text-xl mb-5">En savoir plus</p>
+          <a @click.stop="scrollToContent" class="block text-xl font-bold mb-5">En savoir plus</a>
           <div class="mx-auto text-center w-full">
             <svg
               class="mx-auto"
@@ -34,13 +33,23 @@
       </div>
     </header>
     <article
-      class="my-24 z-10"
+      id="content"
+      class="z-10 snap-start"
     >
+      <div class="py-20 flex flex-col justify-center items-center container mx-auto">
+        <h1 class="font-spectral text-4xl lg:text-8xl">{{ page.title }}</h1>
+        <p>{{ page.description }}</p>
+      </div>
+
       <ContentDoc />
 
-      <footer class="w-full flex justify-between container mx-auto">
-        <NuxtLink v-if="prev" :to="prev._path">Précédent</NuxtLink>
-        <NuxtLink v-if="next" :to="next._path">Suivant</NuxtLink>
+      <footer class="w-full flex justify-between container mx-auto py-20">
+        <NuxtLink v-if="prev" :to="prev._path">
+          Précédent
+        </NuxtLink>
+        <NuxtLink v-if="next" :to="next._path">
+          Suivant
+        </NuxtLink>
       </footer>
     </article>
   </section>
@@ -52,6 +61,14 @@ import { useWindowScroll } from "@vueuse/core";
 const { y } = useWindowScroll();
 const headerRef: Ref<HTMLElement | null> = ref(null);
 const scrollOverHeaderPourcent = ref(0);
+
+const backToMap =  async () => {
+  await navigateTo('/')
+}
+
+const scrollToContent = () => {
+  y.value = headerRef.value.scrollHeight
+}
 
 watch(y, (newValue) => {
   if (headerRef.value) {

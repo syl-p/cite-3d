@@ -9,6 +9,8 @@ offset:
   - 1
 ---
 
+
+::TextParagraph
 ## Le gardien emblématique de la cité
 Quand on évoque la cité médiévale de Carcassonne, la porte Narbonnaise apparaît comme une véritable icône. Monumental point d’entrée, elle impressionne dès le premier regard, avec ses tours majestueuses et ses murs épais. Mais derrière cette beauté se cache une histoire fascinante, un rôle défensif stratégique et des siècles de récits à découvrir. Laissez-vous guider pour percer les secrets de cette porte légendaire.
 
@@ -38,3 +40,4 @@ Les festivals et reconstitutions médiévales, souvent organisés à Carcassonne
 
 ## Conclusion : Une invitation à la découverte
 La porte Narbonnaise n’est pas qu’une entrée ; c’est une promesse d’aventure. Elle invite chaque visiteur à plonger dans un passé riche, à imaginer les bruits des sabots sur les pavés et le fracas des armes sur les remparts. Alors, êtes-vous prêt à franchir ses arches pour vivre votre propre histoire au cœur de la cité de Carcassonne ?
+::

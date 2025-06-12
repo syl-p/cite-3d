@@ -9,6 +9,8 @@ offset:
   - 1
 ---
 
+
+::TextParagraph
 ## Une église au cœur de l’histoire
 Nichée au sein des remparts de la cité de Carcassonne, la basilique Saint-Nazaire est un joyau architectural qui témoigne du riche passé religieux et artistique de la région. Cet édifice, qui mêle harmonieusement les styles roman et gothique, invite les visiteurs à un voyage spirituel et historique. Sa beauté et son atmosphère unique en font un incontournable de toute visite à Carcassonne.
 
@@ -30,3 +32,4 @@ L’intérieur de la basilique invite à la contemplation. Le silence qui y règ
 
 ## Conclusion : Une perle au sein de la cité
 La basilique Saint-Nazaire est bien plus qu’un simple édifice religieux. Elle est un témoignage vivant de l’histoire, de l’art et de la foi qui ont traversé les siècles à Carcassonne. Que vous soyez passionné d’architecture, d’histoire ou simplement en quête de sérénité, ce lieu unique vous marquera par sa beauté et son atmosphère intemporelle. Une halte incontournable lors de votre découverte de la cité médiévale.
+::

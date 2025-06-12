@@ -1,13 +1,11 @@
 import * as THREE from "three";
-import { computed, type ShallowRef } from "vue";
-type CameraState = "IDLE" | "MOVING" | "ARRIVED" | "RESET POSITION";
+import { computed } from "vue";
 
-export default (initialOffset: THREE.Vector3, enabled: ShallowRef<Boolean>) => {
+export default (initialOffset: THREE.Vector3) => {
   const currentPosition = ref(new THREE.Vector3());
   const currentLookAt = ref(new THREE.Vector3());
   const { camera, scene, controls } = useTresContext();
   const { page } = useContent();
-  const cameraState = ref<CameraState>("IDLE");
 
   let previousPosition = ref(new THREE.Vector3());
   let previousLookAt = ref(new THREE.Vector3());
@@ -22,7 +20,8 @@ export default (initialOffset: THREE.Vector3, enabled: ShallowRef<Boolean>) => {
   }
 
   const currentPart = computed(() => {
-    let targetedPosition = new THREE.Vector3();
+    let targetedPosition = new THREE.Vector3(0, 1, 0);
+
     if (!scene.value || !page.value) return targetedPosition;
 
     scene.value.traverse((obj) => {
@@ -47,15 +46,7 @@ export default (initialOffset: THREE.Vector3, enabled: ShallowRef<Boolean>) => {
   const { onLoop } = useRenderLoop();
 
   onLoop(({ delta }) => {
-    if (camera && camera.value && enabled.value) {
-      if (
-        cameraState.value !== "ARRIVED" &&
-        cameraState.value !== "RESET POSITION"
-      ) {
-        if (cameraState.value === "IDLE") {
-          cameraState.value = "MOVING";
-        }
-
+    if (camera && camera.value) {
         let idealOffset = calculateOffset(
           currentPart.value,
           currentPartOffset.value
@@ -77,58 +68,9 @@ export default (initialOffset: THREE.Vector3, enabled: ShallowRef<Boolean>) => {
           currentLookAt.value.distanceTo(currentPart.value) < 0.1;
 
         if (positionReached && lookAtReached) {
-          cameraState.value = "ARRIVED";
           previousPosition.value = currentPosition.value.clone();
           previousLookAt.value = previousLookAt.value.clone();
         }
-      } else if (cameraState.value === "RESET POSITION") {
-        const realCurrentPosition = camera.value.position.clone();
-        const realPreviousPosition = previousPosition.value.clone();
-        const resetLerpFactor = 0.1;
-        realCurrentPosition.lerp(realPreviousPosition, resetLerpFactor);
-        currentLookAt.value.lerp(currentPart.value, resetLerpFactor);
-
-        camera.value.position.copy(realCurrentPosition);
-        camera.value.lookAt(currentLookAt.value);
-
-        if (controls.value)
-          //@ts-ignore
-          controls.value.target.lerp(currentLookAt.value, resetLerpFactor);
-
-        const positionReached =
-          realCurrentPosition.distanceTo(realPreviousPosition) < 0.1;
-
-        // console.log(
-        //   "Distance actuelle:",
-        //   realCurrentPosition.distanceTo(realPreviousPosition),
-        //   "Seuil:",
-        //   0.01,
-        //   "Position actuelle:",
-        //   realCurrentPosition,
-        //   "Position précédente:",
-        //   realPreviousPosition,
-        //   "Atteint ?",
-        //   positionReached,
-        // );
-
-        if (positionReached) {
-          cameraState.value = "IDLE";
-        }
-      }
     }
   });
-
-  watch(
-    [page],
-    (newPage, oldPage) => {
-      if (!oldPage[0]) return;
-
-      if (newPage[0] && newPage[0]._path !== oldPage[0]._path) {
-        cameraState.value = "RESET POSITION";
-      }
-    },
-    { immediate: true }
-  );
-
-  return { cameraState };
 };

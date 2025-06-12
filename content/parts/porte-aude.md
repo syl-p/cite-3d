@@ -9,6 +9,7 @@ offset:
   - 0.4
 ---
 
+::TextParagraph
 ## L’entrée emblématique de la cité
 La porte d’Aude est l’une des entrées les plus majestueuses et impressionnantes de la cité de Carcassonne. Ce monument historique témoigne de l’ingéniosité des architectes médiévaux et de l’importance stratégique de la ville. Véritable porte d’entrée vers le passé, elle permet aux visiteurs de franchir les remparts pour découvrir la richesse architecturale et historique de la cité fortifiée.
 
@@ -29,3 +30,4 @@ Lorsque vous franchissez la porte d’Aude, vous vous trouvez immédiatement plo
 
 ## Conclusion : Un passage chargé d’histoire
 La porte d’Aude est un lieu incontournable de la cité de Carcassonne. Non seulement elle marque l’entrée dans l’histoire médiévale de la ville, mais elle est aussi un véritable chef-d'œuvre d’architecture militaire. En la traversant, vous ferez un voyage dans le temps, découvrant un passé où la ville était protégée par des fortifications impressionnantes. Que vous soyez passionné d’histoire, de photographie ou tout simplement curieux, la porte d’Aude est un lieu à ne pas manquer lors de votre visite à Carcassonne.
+::

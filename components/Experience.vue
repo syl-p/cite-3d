@@ -8,41 +8,17 @@
     :max-polar-angle="Math.PI * 0.4"
   />
   <TresAmbientLight :intensity="1.5" />
-  <TresDirectionalLight cast-shadow :position="[-4, 8, 6]" :intensity="1.5" />
-  <Suspense
-    @resolve="
-      () => {
-        loaded = true;
-      }
-    "
-  >
+  <TresDirectionalLight cast-shadow :position="[4, 5, 3]" :intensity="1" />
+  <Suspense>
     <Carcassonne />
-    <template #fallback>
-      <Html center fullscreen>
-        <div
-          class="flex h-full w-full flex-col items-center justify-center bg-white"
-        >
-          <p>Chargement de la carte...</p>
-        </div>
-      </Html>
-    </template>
   </Suspense>
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(["isMoving"]);
-import { Html } from "@tresjs/cientos";
 import * as THREE from "three";
-const { page } = useContent();
-const initialOffset = new THREE.Vector3(3, 1.5, 2.5);
-const loaded = ref<Boolean>(false);
-const { cameraState } = usePageLocalisation(initialOffset, loaded);
+const initialOffset = new THREE.Vector3(3.5, -0.2, 0);
+const applicationStore = useApplicationStore()
+const {state} = storeToRefs(applicationStore)
 
-watch(
-  [cameraState, page],
-  (value) => {
-    emit("isMoving", value[0]);
-  },
-  { immediate: true }
-);
+usePageLocalisation(initialOffset);
 </script>

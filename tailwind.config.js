@@ -18,6 +18,11 @@ export default {
         accent: "",
         page: "#fdfcf5",
       },
+      container: {
+          screens: {
+          sm: '600px'
+        },
+      }
     },
   },
   plugins: [require("@tailwindcss/typography")],

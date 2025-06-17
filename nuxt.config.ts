@@ -13,6 +13,6 @@ export default defineNuxtConfig({
     documentDriven: true,
   },
   app: {
-    baseURL: ''
+    baseURL: '/cite-3d'
   }
 });

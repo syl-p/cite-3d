@@ -12,4 +12,7 @@ export default defineNuxtConfig({
   content: {
     documentDriven: true,
   },
+  app: {
+    baseURL: ''
+  }
 });

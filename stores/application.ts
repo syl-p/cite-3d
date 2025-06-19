@@ -4,11 +4,16 @@ import { defineStore } from 'pinia'
 
 export const useApplicationStore = defineStore('application', () => {
 
-    const state: Ref<'intro' | 'exploration'> = ref('intro')
+    const universeLoaded: Ref<Boolean> = ref(false)
+    const state: Ref<'intro' | 'exploration' | 'page'> = ref('intro')
 
-    function setState(value: 'intro' | 'exploration') {
+    function setState(value: 'intro' | 'exploration' | 'page')  {
         state.value = value
     }
 
-    return { state, setState }
+    function setLoaded(bool: boolean) {
+        universeLoaded.value = bool
+    }
+
+    return { state, universeLoaded, setLoaded, setState }
 })

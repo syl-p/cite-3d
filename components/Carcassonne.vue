@@ -1,10 +1,13 @@
 <template>
   <primitive :object="scene" :scale="0.01"></primitive>
+  <Spots v-if="state == 'exploration'"/>
 </template>
 
 <script setup lang="ts">
 import * as THREE from "three";
 const { page } = useContent();
+const applicationStore = useApplicationStore()
+const {state} = storeToRefs(applicationStore)
 
 const { scene } = await useGLTF(
   "/cite-carcassonne-export/cite-carcassonne.gltf",

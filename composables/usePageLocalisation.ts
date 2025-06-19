@@ -1,11 +1,13 @@
 import * as THREE from "three";
 import { computed } from "vue";
 
-export default (initialOffset: THREE.Vector3) => {
+export default (loaded: Ref<Boolean>) => {
   const currentPosition = ref(new THREE.Vector3());
   const currentLookAt = ref(new THREE.Vector3());
   const { camera, scene, controls } = useTresContext();
   const { page } = useContent();
+  const applicationStore = useApplicationStore()
+  const {state} = storeToRefs(applicationStore)
 
   let previousPosition = ref(new THREE.Vector3());
   let previousLookAt = ref(new THREE.Vector3());
@@ -19,10 +21,32 @@ export default (initialOffset: THREE.Vector3) => {
     return idealOffset;
   }
 
-  const currentPart = computed(() => {
-    let targetedPosition = new THREE.Vector3(0, 1, 0);
+  const initialLookAt = computed(() => {
+    switch (state.value) {
+      case 'intro':
+        return new THREE.Vector3(0, 1, 0)
+        break;
+      default:
+        return new THREE.Vector3(0, 0, 0)
+        break;
+    }
+  })
 
-    if (!scene.value || !page.value) return targetedPosition;
+  const initialOffset = computed(() => {
+    switch (state.value) {
+      case 'intro':
+        return new THREE.Vector3(3.5, -0.1, 0)
+        break;
+      default:
+        return new THREE.Vector3(2.5, 3, -2)
+        break;
+    }
+  })
+
+  const currentPart = computed(() => {
+    let targetedPosition = initialLookAt.value;
+
+    if (!scene.value || !page.value || !page.value.object_name) return targetedPosition;
 
     scene.value.traverse((obj) => {
       if (obj.name === page.value.object_name) {
@@ -40,13 +64,13 @@ export default (initialOffset: THREE.Vector3) => {
           page.value.offset[1],
           page.value.offset[2]
         )
-      : initialOffset;
+      : initialOffset.value;
   });
 
   const { onLoop } = useRenderLoop();
 
   onLoop(({ delta }) => {
-    if (camera && camera.value) {
+    if (camera && camera.value && state && state.value && loaded.value) {
         let idealOffset = calculateOffset(
           currentPart.value,
           currentPartOffset.value

@@ -9,8 +9,11 @@ offset:
   - 0.5
 ---
 
+::SplashImage{image="theatre.jpg"}
+::
 
 ::TextParagraph
+
 ## Un espace au croisement de l’histoire et de l’art
 
 Au cœur de la cité de Carcassonne, le théâtre en plein air est bien plus qu’une simple scène. Installé dans un cadre historique unique, il propose une expérience culturelle où le patrimoine médiéval rencontre les arts vivants. Véritable joyau pour les amateurs de spectacles, il s’impose comme un lieu incontournable pour découvrir la magie de Carcassonne sous un autre angle.

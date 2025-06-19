@@ -9,7 +9,11 @@ offset:
   - 1
 ---
 
+::SplashImage{image="st_nazaire.jpg"}
+::
+
 ::TextParagraph
+
 ## Une porte à l’histoire riche
 
 La porte Saint-Nazaire, l’une des entrées principales de la cité de Carcassonne, est un témoignage imposant du passé militaire et historique de la ville. Située à proximité de la basilique Saint-Nazaire, cette porte médiévale permet aux visiteurs de pénétrer dans le cœur de la cité fortifiée. En franchissant cette porte, vous vous immergez dans une atmosphère unique où se mêlent histoire, architecture et défense stratégique.

@@ -4,7 +4,7 @@
       class="bg-[#fdfcf5] fixed w-full h-full transition-all -z-10"
       :style="{ opacity: scrollOverHeaderPourcent / 100 }"
     ></div>
-    <header class="h-[200vh] snap-start relative w-full transition-all" ref="headerRef" @click="backToMap()">
+    <header class="h-[150vh] snap-start relative w-full transition-all" ref="headerRef" @click="backToMap()">
       <div
         v-show="scrollOverHeaderPourcent < 60"
         class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-screen w-full flex flex-col justify-center items-center"
@@ -63,7 +63,7 @@ const headerRef: Ref<HTMLElement | null> = ref(null);
 const scrollOverHeaderPourcent = ref(0);
 
 const backToMap =  async () => {
-  await navigateTo('/')
+  await navigateTo('/parts')
 }
 
 const scrollToContent = () => {

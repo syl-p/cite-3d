@@ -10,11 +10,11 @@ const applicationStore = useApplicationStore()
 const {state} = storeToRefs(applicationStore)
 
 const { scene } = await useGLTF(
-  "/cite-carcassonne-export/cite-carcassonne.gltf",
+  "cite-carcassonne-export/cite-carcassonne.gltf",
   { draco: true }
 );
 
-const { alphaMap } = await useTexture({ alphaMap: "/alpha-map.png" });
+const { alphaMap } = await useTexture({ alphaMap: "alpha-map.png" });
 const emit = defineEmits(["select"]);
 
 const material = new THREE.MeshStandardMaterial({ color: "#e2e2e2" });

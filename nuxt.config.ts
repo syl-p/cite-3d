@@ -14,5 +14,10 @@ export default defineNuxtConfig({
   },
   app: {
     baseURL: '/cite-3d/'
+  },
+  runtimeConfig: {
+    public: {
+      base: '/cite-3d/'
+    }
   }
 });

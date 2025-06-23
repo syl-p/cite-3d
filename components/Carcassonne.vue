@@ -1,6 +1,6 @@
 <template>
-  <primitive :object="scene" :scale="0.01"></primitive>
-  <Spots v-if="state == 'exploration'"/>
+  <primitive :object="scene" :scale="0.01" @click="navigateTo('/parts')"></primitive>
+  <Spots v-if="state === 'exploration'"/>
 </template>
 
 <script setup lang="ts">

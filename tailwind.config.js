@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  ssr: false,
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -15,6 +16,7 @@ export default {
     },
     extend: {
       colors: {
+        primary: "#eab308",
         accent: "",
         page: "#fdfcf5",
       },

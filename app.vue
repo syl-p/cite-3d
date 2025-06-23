@@ -1,41 +1,50 @@
 <template>
-  <main class="relative h-fit font-serif text-lg scroll-smooth" @click="navigateTo('/parts')">
-    <div v-if="state === 'intro' && universeLoaded" class="fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center -z-[100]">
-      <h1 class="text-[70px] md:text-[100px] xl:text-[160px] uppercase font-bold font-spectral">Carcassonne</h1>
-    </div>
-
-    <TresCanvas
-      v-bind="gl"
-      window-size
-      shadows
-      class="fixed top-0 left-0 -z-50 w-full h-screen"
-    >
-      <Experience />
-    </TresCanvas>
-
-    <header class="z-50 p-8 fixed flex justify-between top-0 left-0 w-full">
-      <div>
-        <NuxtLink to="/" class="flex space-x-3 justify-center items-center">
-          <div class="w-10 h-10 bg-yellow-500"></div>
-          <div class="uppercase font-spectral">
-            Cité<br />
-            de <span class="font-bold">Carcassonne</span>
-          </div>
-        </NuxtLink>
+  <main class="relative h-fit font-serif text-lg">
+    <client-only>
+      <div v-if="state === 'intro' && universeLoaded" class="fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center -z-[100]">
+        <h1 class="text-[70px] md:text-[100px] xl:text-[160px] uppercase font-bold font-spectral">Carcassonne</h1>
       </div>
-      <div>
-        <UiNavigation :pages="data" />
-      </div>
-    </header>
+    </client-only>
+
+    <client-only>
+      <TresCanvas
+        v-bind="gl"
+        window-size
+        shadows
+        class="fixed top-0 left-0 -z-50 w-full h-screen"
+      >
+        <Experience />
+      </TresCanvas>
+    </client-only>
+
+    <client-only>
+      <header class="z-50 p-8 fixed flex justify-between top-0 left-0 w-full">
+        <div>
+          <NuxtLink to="/" class="flex space-x-3 justify-center items-center">
+            <div class="w-10 h-10 bg-primary"></div>
+            <div class="uppercase font-spectral">
+              Cité<br />
+              de <span class="font-bold">Carcassonne</span>
+            </div>
+          </NuxtLink>
+        </div>
+        <div>
+          <UiNavigation :pages="data" />
+        </div>
+      </header>
+    </client-only>
+
     <NuxtPage />
 
-    <div class="absolute w-full h-screen top-0 left-0 z-[1000]" v-if="!universeLoaded">
-        <div
-          class="flex h-full w-full flex-col items-center justify-center bg-white"
-        >
-          <p>Chargement de la carte...</p>
-        </div>
-    </div>
+    <client-only>
+      <div class="absolute w-full h-screen top-0 left-0 z-[1000]" v-if="!universeLoaded">
+          <div
+            class="flex h-full w-full flex-col items-center justify-center bg-white"
+          >
+            <p>Chargement de la carte...</p>
+          </div>
+      </div>
+    </client-only>
   </main>
 </template>
 

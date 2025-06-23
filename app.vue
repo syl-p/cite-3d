@@ -19,7 +19,7 @@
           <div class="w-10 h-10 bg-yellow-500"></div>
           <div class="uppercase font-spectral">
             Cité<br />
-            de <span class="font-bold">{{loaded}}</span>
+            de <span class="font-bold">Carcassonne</span>
           </div>
         </NuxtLink>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <TresPerspectiveCamera :args="[60, 1, 0.1, 1000]" :position="initialOffset" />
+  <TresPerspectiveCamera :args="[60, 1, 0.1, 1000]" :position="new THREE.Vector3(3.5, -0.1, 0)" />
   <!-- <OrbitControls
     :make-default="true"
     :enableDamping="false"
@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import { Html } from "@tresjs/cientos";
 import * as THREE from "three";
-let initialOffset = new THREE.Vector3(3.5, -0.1, 0);
 const applicationStore = useApplicationStore()
 const {state} = storeToRefs(applicationStore)
 const {setState, setLoaded} = applicationStore

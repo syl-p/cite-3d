@@ -19,13 +19,15 @@
       <!-- Dropdown menu -->
       <div id="dropdown" :class="{hidden: !open}" class="absolute right-0 z-10 mt-4 min-w-56 bg-white rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
           <ul class="text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-            <li v-for="(p, index) of pages" :key="index" :class="page && page.title == p.title ? 'bg-yellow-500': ''">
-              <NuxtLink
-                :to="p._path"
-                @click="closeModal" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                {{ p.title }}
-              </NuxtLink>
-            </li>
+            <template v-for="(p, index) of pages">
+              <li v-if="p._path !== '/parts'" :key="index" :class="page && page.title == p.title ? 'bg-yellow-500': ''">
+                <NuxtLink
+                  :to="p._path"
+                  @click="closeModal" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  {{ p.title }}
+                </NuxtLink>
+              </li>
+            </template>
           </ul>
       </div>
     </div>

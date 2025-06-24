@@ -1,3 +1,0 @@
----
-title: "map mode"
----

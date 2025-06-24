@@ -20,7 +20,7 @@
     <client-only>
       <header class="z-50 p-8 fixed flex justify-between top-0 left-0 w-full">
         <div>
-          <NuxtLink to="/" class="flex space-x-3 justify-center items-center">
+          <NuxtLink to="/parts" class="flex space-x-3 justify-center items-center">
             <div class="w-10 h-10 bg-primary"></div>
             <div class="uppercase font-spectral">
               Cité<br />

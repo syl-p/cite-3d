@@ -10,7 +10,7 @@ const applicationStore = useApplicationStore()
 const {state} = storeToRefs(applicationStore)
 
 const { scene } = await useGLTF(
-  "cite-carcassonne-export/cite-carcassonne.gltf",
+  "/cite-carcassonne-export/cite-carcassonne.gltf",
   { draco: true }
 );
 

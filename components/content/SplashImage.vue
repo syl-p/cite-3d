@@ -1,6 +1,6 @@
 <template>
   <section class="mt-20 mb-20 mx-auto container">
-    <img :src="`/img/${image}`" />
+    <img :src="`/img/${image}`" class="w-full"/>
   </section>
 </template>
 

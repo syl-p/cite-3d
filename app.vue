@@ -11,7 +11,7 @@
         v-bind="gl"
         window-size
         shadows
-        class="fixed top-0 left-0 -z-50 w-full h-screen"
+        class="absolute top-0 left-0 -z-50 w-full h-screen"
       >
         <Experience />
       </TresCanvas>
@@ -20,15 +20,19 @@
     <client-only>
       <header class="z-50 p-8 fixed flex justify-between top-0 left-0 w-full">
         <div>
-          <NuxtLink to="/parts" class="flex space-x-3 justify-center items-center">
-            <div class="w-10 h-10 bg-primary"></div>
-            <div class="uppercase font-spectral">
+          <NuxtLink to="/parts" class="uppercase font-spectral flex space-x-3 items-center">
+            <span v-if="state == 'page' " class="block p-2 bg-yellow-500 text-white font-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+              </svg>
+            </span>
+            <span class="hidden md:block">
               Cité<br />
               de <span class="font-bold">Carcassonne</span>
-            </div>
+            </span>
           </NuxtLink>
         </div>
-        <div>
+        <div class="flex-1 text-right">
           <UiNavigation :pages="data" />
         </div>
       </header>
@@ -45,6 +49,10 @@
           </div>
       </div>
     </client-only>
+
+    <NuxtLink v-if="state === 'intro'" to="/parts" class="fixed bottom-10 left-1/2 -translate-x-1/2 border block z-50 font-bold text-2xl uppercase p-2">
+      Exploration
+    </NuxtLink>
   </main>
 </template>
 
@@ -52,6 +60,7 @@
 import { NoToneMapping, PCFSoftShadowMap, SRGBColorSpace } from "three";
 import {useApplicationStore} from '@/stores/application'
 const applicationStore = useApplicationStore()
+const {setState} = applicationStore
 const {state, universeLoaded} = storeToRefs(applicationStore)
 
 const { data } = useAsyncData("parts", () =>

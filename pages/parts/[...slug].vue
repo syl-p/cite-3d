@@ -11,12 +11,11 @@
         class="fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 h-screen w-full flex flex-col justify-center items-center"
       >
         <div class="flex-1">
-
         </div>
 
-        <div class="pb-28">
-          <a @click.stop="scrollToContent" class="block text-xl font-bold mb-5">En savoir plus</a>
-          <div class="mx-auto text-center w-full">
+        <div>
+          <a @click.stop="scrollToContent" class="block text-2xl uppercase font-bold mb-5">En savoir plus</a>
+          <div class="mx-auto text-center w-full pb-20">
             <svg
               class="mx-auto"
               width="24"
@@ -37,14 +36,14 @@
       id="content"
       class="z-10 snap-start"
     >
-      <div class="py-20 flex flex-col justify-center items-center container mx-auto">
+      <div class="py-20 px-8 flex flex-col justify-center items-center container mx-auto">
         <h1 class="font-spectral text-4xl lg:text-8xl">{{ page.title }}</h1>
-        <p>{{ page.description }}</p>
+        <p class="mb-6">{{ page.description }}</p>
       </div>
 
       <ContentDoc />
 
-      <footer class="w-full flex justify-between container mx-auto py-20">
+      <footer class="flex justify-between py-20 px-8 container mx-auto">
         <NuxtLink v-if="prev" :to="prev._path">
           Précédent
         </NuxtLink>

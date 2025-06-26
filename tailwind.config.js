@@ -20,11 +20,7 @@ export default {
         accent: "",
         page: "#fdfcf5",
       },
-      container: {
-          screens: {
-          sm: '600px'
-        },
-      }
+      container: "px-8 lg:px-0 md:max-w-[600px]"
     },
   },
   plugins: [require("@tailwindcss/typography")],

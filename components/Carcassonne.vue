@@ -1,6 +1,6 @@
 <template>
   <primitive :object="scene" :scale="0.01" @click="navigateTo('/parts')"></primitive>
-  <Spots v-if="state === 'exploration'"/>
+  <Spots v-if="state == 'exploration'"/>
 </template>
 
 <script setup lang="ts">
@@ -14,7 +14,7 @@ const { scene } = await useGLTF(
   { draco: true }
 );
 
-const { alphaMap } = await useTexture({ alphaMap: "alpha-map.png" });
+const { alphaMap } = await useTexture({ alphaMap: "/alpha-map.png" });
 const emit = defineEmits(["select"]);
 
 const material = new THREE.MeshStandardMaterial({ color: "#e2e2e2" });

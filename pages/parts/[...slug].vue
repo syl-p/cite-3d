@@ -15,7 +15,7 @@
 
         <div>
           <a @click.stop="scrollToContent" class="block text-2xl uppercase font-bold mb-5">En savoir plus</a>
-          <div class="mx-auto text-center w-full pb-20">
+          <div class="mx-auto text-center w-full pb-12">
             <svg
               class="mx-auto"
               width="24"

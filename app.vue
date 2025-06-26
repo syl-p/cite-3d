@@ -7,14 +7,15 @@
     </client-only>
 
     <client-only>
-      <TresCanvas
-        v-bind="gl"
-        window-size
-        shadows
-        class="absolute top-0 left-0 -z-50 w-full h-screen"
-      >
-        <Experience />
-      </TresCanvas>
+      <div class="h-screen w-full fixed top-0 left-0 -z-10">
+        <TresCanvas
+          v-bind="gl"
+          window-size
+          shadows
+        >
+          <Experience />
+        </TresCanvas>
+      </div>
     </client-only>
 
     <client-only>

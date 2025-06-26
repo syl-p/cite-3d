@@ -1,6 +1,6 @@
 <template>
   <Html
-    v-for="(pageObject, index) in pagesAndObjects"
+    v-for="(pageObject, index) in pagesAndObjects.filter(p => p.link != '/parts')"
     :key="index"
     center
     :position="pageObject.position"
@@ -46,6 +46,7 @@ const pagesAndObjects = computed(() => {
             obj.getWorldPosition(targetedPosition);
           }
         });
+
         return {
           title: p.title,
           description: p.excerpt,
